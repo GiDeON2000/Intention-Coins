@@ -79,7 +79,7 @@ async def _change_prefix(ctx, prefix):
     with open('prefixes.json', 'w') as f:
         json.dump(prefixes, f, indent=4)
 
-    await ctx.send(embed = discord.Embed (title = "Изменено", color=config.COLORS["GREEN"], description = f"Префикс изменён на: {prefix}") )
+    await ctx.send(embed = discord.Embed (title = "Изменено", color=config.COLORS["BASE"], description = f"Префикс изменён на: {prefix}") )
 
 
 
