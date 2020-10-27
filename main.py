@@ -38,6 +38,7 @@ async def on_ready():
         print("======================\n")
 
 
+
 @client.event
 async def on_disconnect():
     print("\n======================")

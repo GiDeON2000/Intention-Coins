@@ -1,0 +1,10 @@
+settings = {
+    'TOKEN': 'YOU_TOKEN',
+    'DEFAULT_PREFIX': '$',
+}
+
+COLORS = {
+    'ERROR': 0xFF0000,
+    'BASE': 0x4D4D4D,
+    'WIN': 0x00FF78
+}
