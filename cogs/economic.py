@@ -243,8 +243,34 @@ class Eco(commands.Cog, name='экономика'):
             emb = discord.Embed(title='Успех!', color=config.COLORS["WIN"],
                                     description=f'Вы успешно положили {amount} денег в банк!')
             emb.set_footer(text=f'Вызвал - {ctx.author}', icon_url=ctx.author.avatar_url)
+            await ctx.send(embed=emb)  
+
+
+    @commands.command(
+        name='withdraw',
+        brief='Снять деньги с банка',
+        usage='withdraw <кол.во/all>',
+        description='Снимает отпроделённое кол.во денег из банка'
+    )  
+    async def _withdraw(self, ctx, amount):
+        if int(amount) > DB.Get().bank_amount(ctx=ctx, member=ctx.author):
+            emb = discord.Embed(title='Ошибка!', color=config.COLORS["ERROR"],
+                                description=f'На вашем банковском счету нету столько денег! У вас всего - {DB.Get().bank_amount(ctx=ctx, member=ctx.author)} денег!')
             await ctx.send(embed=emb)
-            
+        
+        elif int(amount) <= 0:
+            emb = discord.Embed(title='Ошибка!', color=config.COLORS["ERROR"],
+                                description=f'Укажите число больше нуля!')
+            await ctx.send(embed=emb)
+    
+        else:
+            DB.Set().add_rem_to_bank(ctx=ctx, member=ctx.author, cash=int(amount), type='remove')
+            DB.Set().add_rem_money(ctx=ctx, member=ctx.author, how_many=int(amount), type='add')
+            emb = discord.Embed(title='Успех!', color=config.COLORS["WIN"],
+                                    description=f'Вы успешно сняли {amount} денег из банка!')
+            emb.set_footer(text=f'Вызвал - {ctx.author}', icon_url=ctx.author.avatar_url)
+            await ctx.send(embed=emb)  
+
     
 
 def setup(client):
