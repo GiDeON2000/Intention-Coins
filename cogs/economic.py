@@ -5,12 +5,10 @@ from discord import errors as dpy_errors
 from Utils import database
 from Utils import func
 from Utils import database as DB
-import pymongo
 import discord
 import config
 import os
 import json
-import aiohttp
 import random
 import asyncio
 
