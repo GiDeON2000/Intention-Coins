@@ -1,5 +1,5 @@
 settings = {
-    'TOKEN': 'YOU_TOKEN',
+    'TOKEN': 'YOUR_TOKEN',
     'DEFAULT_PREFIX': '$',
 }
 
